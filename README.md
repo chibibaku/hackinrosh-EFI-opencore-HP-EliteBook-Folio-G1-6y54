@@ -5,21 +5,38 @@
 - OpenCore 0.9.6
 - Working very well as MacBook9,1
 ### Note
-kexts are up-to-date in Dec. 9th 2023.\
+The kexts are updated as latest version in Dec. 9th 2023.\
 AirportItlwm using v2.3.0 alpha which experimental support for sonoma.\
+In order to use, please update OC, Kext, and necessary files to the latest.\
 # Installation
-Follow dortania OpenCore guide.\
+As a general rule, follow dortania's OpenCore guide.\
 Copy downloaded EFI folder to EFI partition.\
 Setup *your* SMBIOS (serial, MLB, etc...) with GenSMBIOS.
 **Model: `MacBook9,1`**
 
-Then, follow the note down below and change the model as iMacPro1,1 once.
+However, The installer will refuse to install Sonoma with `MacBook9,1` model.
+This is because of this model is not officaly supported in macOS Sonoma.
+So keep following the instruction down below and change the model as `iMacPro1,1` while install.
+Otherwise, you'll get "macOS Sonoma is not compatible with this mac" message and cannot go further.
+
 ## Important note
-Once you create flash drive, you need to change the model as iMacPro1,1 in first installer boot.
-
-After the first reboot which "macOS Installer" has appeare, Turn off your device and disconnect USB flash drive and change back your model to MacBook9,1. This is because of to avoid the message "macOS Sonoma is not compatible with this mac". MacBook9,1 is not officaly supported model for macOS Sonoma.
-
+While booting the installer, you need to change the model as `iMacPro1,1`.
 Model propatie at: `SMBIOS > Generic > SystemProductName`
+
+1. Change the model model as `iMacPro1,1`.
+  - You don't need to mind about serial or MLB.
+2. Boot with installer USB flash drive.
+3. Format the internal drive.
+4. Start the installation.
+5. After the first reboot and while in the boot picker with "macOS Installer" has appeared:
+   1. Turn off your device
+   2. Disconnect the installer drive
+   3. Plug installer drive into host computer
+   4. Write back the model to `MacBook9,1`
+6. Plug installer drive back to laptop.
+7. Boot into picker
+8. Select "macOS Installer" and leave it while installation.
+
 # Status
 ## Verified supported OS
 - macOS 14 Sonoma (14.1.2)

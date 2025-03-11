@@ -1,59 +1,59 @@
 # About
 ## Hardware
+
 ## Software
 - macOS 14 Sonoma (14.1.2)
 - OpenCore 0.9.6
-- Working very well as MacBook9,1
+- SMBIOS: MacBook9,1
+
 ### Note
-The kexts are updated as latest version in Dec. 9th 2023.\
-AirportItlwm using v2.3.0 alpha which experimental support for sonoma.\
-In order to use, please update OC, Kext, and necessary files to the latest.\
+- Kexts updated: December 9th, 2023
+- AirportItlwm: v2.3.0 alpha (experimental Sonoma support)
+- To use this configuration, ensure OC, kexts, and necessary files are updated to the latest versions
+
 # Installation
-As a general rule, follow dortania's OpenCore guide.\
-Copy downloaded EFI folder to EFI partition.\
-Setup *your* SMBIOS (serial, MLB, etc...) with GenSMBIOS.
-**Model: `MacBook9,1`**
+Follow Dortania's OpenCore guide as a general rule.
 
-However, The installer will refuse to install Sonoma with `MacBook9,1` model.
-This is because of this model is not officaly supported in macOS Sonoma.
-So keep following the instruction down below and change the model as `iMacPro1,1` while install.
-Otherwise, you'll get "macOS Sonoma is not compatible with this mac" message and cannot go further.
+1. Copy the EFI folder to your EFI partition
+2. Setup your SMBIOS (serial, MLB, etc.) with GenSMBIOS using `MacBook9,1` model
 
-## Important note
-While booting the installer, you need to change the model as `iMacPro1,1`.
-Model propatie at: `SMBIOS > Generic > SystemProductName`
+**Note**: macOS Sonoma installer will refuse to install with MacBook9,1 model as it's not officially supported. You'll need to temporarily use iMacPro1,1 during installation to avoid the "macOS Sonoma is not compatible with this Mac" message.
 
-1. Change the model model as `iMacPro1,1`.
-  - You don't need to mind about serial or MLB.
-2. Boot with installer USB flash drive.
-3. Format the internal drive.
-4. Start the installation.
-5. After the first reboot and while in the boot picker with "macOS Installer" has appeared:
+## Installation Steps
+
+1. Change the model to `iMacPro1,1` in `SMBIOS > Generic > SystemProductName`
+   - No need to change serial or MLB values
+2. Boot with the installer USB flash drive
+3. Format the internal drive
+4. Start the installation
+5. After the first reboot when "macOS Installer" appears in the boot picker:
    1. Turn off your device
    2. Disconnect the installer drive
-   3. Plug installer drive into host computer
-   4. Write back the model to `MacBook9,1`
-6. Plug installer drive back to laptop.
-7. Boot into picker
-8. Select "macOS Installer" and leave it while installation.
+   3. Connect installer drive to a host computer
+   4. Change the model back to `MacBook9,1`
+   5. Reconnect installer drive to the laptop
+6. Boot into picker
+7. Select "macOS Installer" and continue with installation
 
 # Status
 ## Verified supported OS
 - macOS 14 Sonoma (14.1.2)
+
 ## What works
 - CPU
-  - iGPU (spoof to KabyLake iGPU)
+  - iGPU (spoofed to KabyLake iGPU)
   - Clock management
 - Integrated Speaker / Mic
 - Keyboard
-  - Brightness / Sound sdjustment keys
-- Trackpad *1
+  - Brightness / Sound adjustment keys
+- Trackpad*
 - WiFi / BT
 - Battery status
 - Sleep / wake
 - USB-C
 
-*1 Known issue : Cursor suddenly warp when touch edge of trackpad.
-## What *NOT* works
-- Thunderbolt 3 (work as USB-C)
-- 3.5mm Audio
+*Known issue: Cursor may suddenly warp when touching the edge of trackpad
+
+## What does NOT work
+- Thunderbolt 3 (works only as USB-C)
+- 3.5mm Audio jack
